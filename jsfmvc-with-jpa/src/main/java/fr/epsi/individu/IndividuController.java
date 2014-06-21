@@ -10,6 +10,9 @@ import javax.annotation.Resource;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.PersistenceContext;
+import javax.persistence.PersistenceUnit;
 import javax.sql.DataSource;
 
 @Named
@@ -17,11 +20,17 @@ import javax.sql.DataSource;
 public class IndividuController {
 
 	private final Individu individu = new Individu();
+
+	// @PersistenceContext(unitName = "Tutorial")
 	private EntityManager entityManager;
+	
 
 	// TEMPO, works
-	@Resource(name = "jdbc")
+	
+	@Resource(name = "jpa_ressources")
 	private DataSource dataSource;
+	 
+
 
 	public String create() {
 		return "individu?faces-redirect=true";
@@ -35,12 +44,13 @@ public class IndividuController {
 	}
 
 	public List<Individu> getAll() {
-		/*List<Individu> individus = null;
+		/* List<Individu> individus = null;
 		individus = entityManager.createQuery("select i from Individu i", Individu.class)
 				.getResultList();
 		 */
 
 		// TEMPO, works
+		
 		List<Individu> individus = new ArrayList<>();
 
 		try( java.sql.Connection connection = dataSource.getConnection() )
@@ -67,6 +77,7 @@ public class IndividuController {
 		{
 			ex.printStackTrace();
 		}
+		 
 
 		return individus;
 	}

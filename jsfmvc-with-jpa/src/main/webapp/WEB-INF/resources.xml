@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <tomee>
-<Resource id="jdbc" type="javax.sql.DataSource">
+<Resource id="jpa_ressources" type="javax.sql.DataSource">
   JdbcDriver oracle.jdbc.OracleDriver
   JdbcUrl jdbc:oracle:thin:@localhost:1521:orcl
   UserName jdbc
