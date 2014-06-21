@@ -1,4 +1,4 @@
-jdbc
+JPA
 ====
 
 jsfmvc-with-jpa
