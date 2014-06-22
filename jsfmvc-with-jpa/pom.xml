@@ -11,11 +11,11 @@
 	<!-- précisez le nom et l'email de chaque membre de votre groupe -->
 	<developers>
 		<developer>
-			<name>Johan HENIN</name>
+			<name>NOM</name>
 			<email>EMAIL</email>
 		</developer>
 		<developer>
-			<name>Kim SAVAROCHE</name>
+			<name>NOM</name>
 			<email>EMAIL</email>
 		</developer>
 	</developers>
