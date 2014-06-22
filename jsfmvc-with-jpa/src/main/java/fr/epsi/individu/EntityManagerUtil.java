@@ -4,21 +4,22 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
+
 
 public class EntityManagerUtil 
 {
-	private static final EntityManagerFactory entityManagerFactory;
+	private static EntityManagerFactory entityManagerFactory;
 	
-	static 
-	{
-		try 
-		{
-			entityManagerFactory = Persistence.createEntityManagerFactory("oralce-pu");
-		} catch (Throwable ex) 
-		{
-			System.err.println("Initial SessionFactory creation failed." + ex);
-			throw new ExceptionInInitializerError(ex);
-		}
+	@BeforeClass
+	public static void createEntityManagerFactory() {
+		entityManagerFactory = Persistence.createEntityManagerFactory("myPersistenceUnit");
+	}
+	
+	@AfterClass
+	public static void closeEntityManagerFactory() {
+		entityManagerFactory.close();
 	}
 
 	public static EntityManager getEntityManager() 
