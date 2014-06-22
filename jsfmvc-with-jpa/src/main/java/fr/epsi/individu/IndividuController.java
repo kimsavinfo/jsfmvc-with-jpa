@@ -23,8 +23,6 @@ public class IndividuController {
 
 	public List<Individu> getAll() 
 	{
-		System.out.println("GETALL");
-		
 		try 
 		{
 			entityManager.getTransaction().begin();
@@ -43,7 +41,6 @@ public class IndividuController {
 			entityManager.getTransaction().rollback();
 			return null;
 		}
-		
 	}
 
 	public Individu getIndividu() {

@@ -13,7 +13,8 @@ import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "INDIVIDUS")
-public class Individu {
+public class Individu 
+{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -33,6 +34,7 @@ public class Individu {
 	@Min(value = 0, message = "L'âge ne peut pas être négatif")
 	@Max(value = 150, message = "L'âge est incorrect")
 	private Integer age;
+	
 
 	public Long getId() {
 		return id;
@@ -42,7 +44,8 @@ public class Individu {
 		this.id = id;
 	}
 
-	public String getNom() {
+	public String getNom() 
+	{
 		return nom;
 	}
 
