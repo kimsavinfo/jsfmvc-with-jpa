@@ -1,9 +1,13 @@
-<persistence xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
-	version="2.0" xmlns="http://java.sun.com/xml/ns/persistence">
-	<persistence-unit name="oralce-pu">
-		<provider>org.apache.openjpa.persistence.PersistenceProvider</provider>
-		<non-jta-data-source>java:comp/env/oracle-ressource</non-jta-data-source>
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0"
+	xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence 
+	              http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+	<persistence-unit name="oralcePU">
+		<jta-data-source>oracleRessource</jta-data-source>
 		<class>fr.epsi.individu.Individu</class>
+		<properties>
+			<property name="openjpa.jdbc.DBDictionary" value="oracle" />
+		</properties>
 	</persistence-unit>
 </persistence>

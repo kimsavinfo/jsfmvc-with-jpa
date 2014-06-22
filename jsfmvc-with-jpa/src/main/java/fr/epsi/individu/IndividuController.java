@@ -8,13 +8,16 @@ import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.PersistenceContext;
 
 @Named
 @RequestScoped
 public class IndividuController {
 
+	@PersistenceContext(unitName="oralcePU")
+	private EntityManager entityManager;
+	
 	private final Individu individu = new Individu();
-	private EntityManager entityManager = EntityManagerUtil.getEntityManager();
 
 	public String create() {
 		return "individu?faces-redirect=true";
@@ -25,24 +28,7 @@ public class IndividuController {
 
 	public List<Individu> getAll() 
 	{
-		try 
-		{
-			entityManager.getTransaction().begin();
-			
-			@SuppressWarnings("unchecked")
-			List<Individu> individus = entityManager.createQuery("from Individu").getResultList();
-			for (Iterator<Individu> iterator = individus.iterator(); iterator.hasNext();) 
-			{
-				Individu individu = (Individu) iterator.next();
-			}
-			
-			entityManager.getTransaction().commit();
-			return individus;
-		} catch (Exception e) 
-		{
-			entityManager.getTransaction().rollback();
-			return null;
-		}
+		return null;
 	}
 
 	public Individu getIndividu() {

@@ -45,7 +45,7 @@ public class Individu
 	}
 
 	public String getNom() 
-	{
+	{	
 		return nom;
 	}
 
@@ -53,7 +53,7 @@ public class Individu
 		this.nom = nom;
 	}
 
-	public String getPrenom() {
+	public String getPrenom() {		
 		return prenom;
 	}
 
