@@ -13,9 +13,9 @@ import javax.persistence.PersistenceContext;
 @Named
 @RequestScoped
 public class IndividuController {
-
-	@PersistenceContext(unitName="oralcePU")
-	private EntityManager entityManager;
+	
+  @PersistenceContext(unitName="oraclePU")
+  private EntityManager entityManager;
 	
 	private final Individu individu = new Individu();
 
