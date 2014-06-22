@@ -1,22 +1,21 @@
 package fr.epsi.individu;
 
-import java.util.Iterator;
 import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import javax.persistence.PersistenceContext;
+import javax.persistence.PersistenceContextType;
+import javax.persistence.Query;
 
 @Named
 @RequestScoped
 public class IndividuController {
-	
-  @PersistenceContext(unitName="oraclePU")
-  private EntityManager entityManager;
-	
+
+	@PersistenceContext(unitName="oraclePU", type = PersistenceContextType.EXTENDED)
+	private EntityManager entityManager;
+
 	private final Individu individu = new Individu();
 
 	public String create() {
@@ -26,9 +25,10 @@ public class IndividuController {
 	public void delete(long id) {
 	}
 
-	public List<Individu> getAll() 
-	{
-		return null;
+	public List<Individu> getAll() throws Exception
+	{	
+		Query query = entityManager.createQuery("SELECT i from Individu as i");
+        return query.getResultList();
 	}
 
 	public Individu getIndividu() {
