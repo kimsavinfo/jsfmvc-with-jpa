@@ -12,29 +12,26 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
-@Table(name = "INDIVIDUS")
-public class Individu 
-{
-
+@Table(name="INDIVIDUS")
+public class Individu {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "ID_INDIVIDU")
+	@Column(name="ID_INDIVIDU")
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
-
-	@Column(name = "NOM_INDIVIDU")
-	@Size(min = 1, max = 30, message = "Le nom est obligatoire est doit contenir au plus 30 caractères !")
+	
+	@Column(name="NOM_INDIVIDU")
+	@Size(min = 1, max = 30, message = "Le nom est obligatoire et doit contenir au plus 30 caractères !")
 	private String nom;
 
-	@Column(name = "PRENOM_INDIVIDU")
-	@Size(min = 1, max = 30, message = "Le prénom est obligatoire est doit contenir au plus 30 caractères !")
+	@Column(name="PRENOM_INDIVIDU")
+	@Size(min = 1, max = 30, message = "Le prénom est obligatoire et doit contenir au plus 30 caractères !")
 	private String prenom;
 
-	@Column(name = "AGE_INDIVIDU")
+	@Column(name="AGE_INDIVIDU")
 	@NotNull(message = "L'âge est obligatoire")
 	@Min(value = 0, message = "L'âge ne peut pas être négatif")
 	@Max(value = 150, message = "L'âge est incorrect")
 	private Integer age;
-	
 
 	public Long getId() {
 		return id;
@@ -44,8 +41,7 @@ public class Individu
 		this.id = id;
 	}
 
-	public String getNom() 
-	{	
+	public String getNom() {
 		return nom;
 	}
 
@@ -53,7 +49,7 @@ public class Individu
 		this.nom = nom;
 	}
 
-	public String getPrenom() {		
+	public String getPrenom() {
 		return prenom;
 	}
 
