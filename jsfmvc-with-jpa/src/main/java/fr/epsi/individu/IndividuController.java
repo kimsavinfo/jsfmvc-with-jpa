@@ -28,16 +28,19 @@ public class IndividuController {
 	{
 		ut.begin();
 		boolean transactionOk = false;
-		try {
+		try 
+		{
 			entityManager.persist(individu);
-
 			transactionOk = true;
 		}
-		finally {
-			if(transactionOk) {
+		finally 
+		{
+			if(transactionOk) 
+			{
 				ut.commit();
 			}
-			else {
+			else 
+			{
 				ut.rollback();
 			}
 		}
@@ -48,10 +51,26 @@ public class IndividuController {
 	public void delete(long individuId) throws NotSupportedException, SystemException, IllegalStateException, SecurityException, HeuristicMixedException, HeuristicRollbackException, RollbackException 
 	{
 		ut.begin();
-		entityManager.createQuery("delete from Individu i where i.id = :id")
-			.setParameter("id", individuId)
-			.executeUpdate();
-		ut.commit();
+		boolean transactionOk = false;
+		try 
+		{
+			entityManager.createNativeQuery("delete from INDIVIDUS where ID_INDIVIDU = ?")
+	            .setParameter(1, individuId)
+	            .executeUpdate();
+
+			transactionOk = true;
+		}
+		finally 
+		{
+			if(transactionOk) 
+			{
+				ut.commit();
+			}
+			else 
+			{
+				ut.rollback();
+			}
+		}
 	}
 
 	public List<Individu> getAll() {

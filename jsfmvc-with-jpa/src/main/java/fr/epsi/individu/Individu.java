@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
@@ -13,10 +14,11 @@ import javax.validation.constraints.Size;
 
 @Entity
 @Table(name="INDIVIDUS")
+@SequenceGenerator(name="INDIVIDU_SEQUENCE", sequenceName="SEQ_INDIVIDUS") // sequenceName = nom séquence en base
 public class Individu {
 	@Id
 	@Column(name="ID_INDIVIDU")
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="INDIVIDU_SEQUENCE")
 	private Long id;
 	
 	@Column(name="NOM_INDIVIDU")
