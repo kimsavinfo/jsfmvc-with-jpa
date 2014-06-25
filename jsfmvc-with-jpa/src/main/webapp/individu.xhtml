@@ -14,29 +14,29 @@
 	<h:form styleClass="col-md-4" acceptcharset="UTF-8" >
 		<div class="form-group">
 			<h:outputLabel for="prenom" value="Prénom" />
-			<h:inputText id="prenom" styleClass="form-control" value="#{individuController.individu.prenom}"/>
+			<h:inputText id="prenom" styleClass="form-control" value="#{Controleur.individu.prenom}"/>
 			<h:message errorClass="label label-danger" for="prenom" />
 		</div>
 		<div class="form-group">
 			<h:outputLabel for="nom" value="Nom" />
-			<h:inputText id="nom" styleClass="form-control" value="#{individuController.individu.nom}"/>
+			<h:inputText id="nom" styleClass="form-control" value="#{Controleur.individu.nom}"/>
 			<h:message errorClass="label label-danger" for="nom" />
 		</div>
 		<div class="form-group">
 			<h:outputLabel for="age" value="Age" />
-			<h:inputText id="age" styleClass="form-control" value="#{individuController.individu.age}"/>
+			<h:inputText id="age" styleClass="form-control" value="#{Controleur.individu.age}"/>
 			<h:message errorClass="label label-danger" for="age" />
 		</div>
-		<h:commandButton styleClass="btn btn-default" value="Enregistrer" action="#{individuController.create()}"/>
+		<h:commandButton styleClass="btn btn-default" value="Enregistrer" action="#{Controleur.create()}"/>
 	</h:form>
 </div>
 
 <div class="container">
 	<h3>Liste des individus déjà enregistrés</h3>
 	<h:form>
-		<h:dataTable styleClass="table" value="#{individuController.all}" var="i">
+		<h:dataTable styleClass="table" value="#{Controleur.all}" var="i">
 			<h:column>
-				<h:commandLink action="#{individuController.delete(i.id)}">
+				<h:commandLink action="#{Controleur.delete(i.id)}">
 					<span class="glyphicon glyphicon-remove-circle"></span>
 				</h:commandLink>
 			</h:column>
