@@ -13,7 +13,7 @@ import javax.transaction.RollbackException;
 import javax.transaction.SystemException;
 //@RequestScoped
 @Named
-//@RequestScoped
+@RequestScoped
 public class Controleur {
 		
 	@EJB
@@ -22,9 +22,9 @@ public class Controleur {
 	
 	private Individu individu = new Individu();
 	
-	public void create(){
+	public String create(){
 		try {
-			individuControlleur.create(this.individu);
+			return individuControlleur.create(this.individu);
 		} catch (IllegalStateException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -47,6 +47,7 @@ public class Controleur {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		return null;
 	}
 	
 	public List<Individu> getAll(){
@@ -79,7 +80,8 @@ public class Controleur {
 			e.printStackTrace();
 		}
 	}
+	
 	public Individu getIndividu() {
-		return this.individu;
+		return individu;
 	}
 }
