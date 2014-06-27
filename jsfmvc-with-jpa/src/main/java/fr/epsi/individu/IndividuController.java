@@ -3,6 +3,7 @@ package fr.epsi.individu;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
@@ -17,68 +18,29 @@ import javax.transaction.UserTransaction;
 @Named
 @RequestScoped
 public class IndividuController {
-
+	
+	@EJB
+	private IndividuDAO individuDAO = new IndividuDAO();
 	private Individu individu = new Individu();
-	@PersistenceContext(unitName="individuPersistenceUnit")
-	private EntityManager entityManager;
-	@Resource
-	UserTransaction ut;
+	
+	
 
 	public String create() throws NotSupportedException, SystemException, IllegalStateException, SecurityException, HeuristicMixedException, HeuristicRollbackException, RollbackException 
 	{
-		ut.begin();
-		boolean transactionOk = false;
-		try 
-		{
-			entityManager.persist(individu);
-			transactionOk = true;
-		}
-		finally 
-		{
-			if(transactionOk) 
-			{
-				ut.commit();
-			}
-			else 
-			{
-				ut.rollback();
-			}
-		}
-
+		individuDAO.create(individu);
 		return "individu?faces-redirect=true";
 	}
 
 	public void delete(long individuId) throws NotSupportedException, SystemException, IllegalStateException, SecurityException, HeuristicMixedException, HeuristicRollbackException, RollbackException 
 	{
-		ut.begin();
-		boolean transactionOk = false;
-		try 
-		{
-			entityManager.createNativeQuery("delete from INDIVIDUS where ID_INDIVIDU = ?")
-	            .setParameter(1, individuId)
-	            .executeUpdate();
 
-			transactionOk = true;
-		}
-		finally 
-		{
-			if(transactionOk) 
-			{
-				ut.commit();
-			}
-			else 
-			{
-				ut.rollback();
-			}
-		}
+			individuDAO.delete(individuId);
 	}
 
-	public List<Individu> getAll() {
+	public List<Individu> getAll() throws IllegalStateException, SecurityException, NotSupportedException, SystemException, HeuristicMixedException, HeuristicRollbackException, RollbackException {
 
-		List<Individu> individus = null;
-		individus = entityManager.createNativeQuery("select * from INDIVIDUS", Individu.class)
-				.getResultList();
-		return individus;
+		return individuDAO.getAll();
+		
 	}
 
 	public Individu getIndividu() {
